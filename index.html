@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aurora — Glass Library Catalogue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Drifting aurora mesh, purely decorative -->
+  <div class="aurora-bg" aria-hidden="true">
+    <span class="blob-1"></span>
+    <span class="blob-2"></span>
+    <span class="blob-3"></span>
+    <span class="blob-4"></span>
+    <span class="blob-5"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand-text">Aurora</span>
+          <span class="brand-sub">Glass Library Catalogue</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-hero">
+      <p class="eyebrow" id="headerNote">Loading collection…</p>
+      <h1>Find your next read in the mist</h1>
+      <p>Search, sort and filter a curated shelf of modern fiction and nonfiction — then pick a few titles to line up side by side in the Compare Tray.</p>
+    </div>
+
+    <div class="toolbar glass">
+      <div class="search-field">
+        <svg class="search-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="searchInput" class="search-input"
+               placeholder="Search by title, author or theme…"
+               autocomplete="off" aria-label="Search the catalogue">
+        <button type="button" id="searchClear" class="search-clear" aria-label="Clear search">
+          <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sort-field">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="title-asc">Title A–Z</option>
+          <option value="year-desc">Year (newest)</option>
+          <option value="rating-desc">Rating (high to low)</option>
+          <option value="pages-desc">Pages (most to fewest)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="genre-filter" id="genreFilter" role="group" aria-label="Filter by genre"></div>
+
+    <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+
+    <ul class="book-grid" id="bookGrid" aria-label="Book results"></ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Aurora — Glass Library Catalogue</p>
+      <p>Variation E — Web Technology</p>
+    </div>
+  </footer>
+
+  <!-- Floating Compare Tray, persists selection across pages via localStorage -->
+  <section class="compare-tray glass" id="compareTray" aria-label="Compare tray" hidden>
+    <div class="tray-covers" id="trayCovers"></div>
+    <div class="tray-info">
+      <p class="tray-count" id="trayCount"></p>
+    </div>
+    <div class="tray-actions">
+      <button type="button" class="btn btn-ghost" id="trayClearBtn">Clear</button>
+      <button type="button" class="btn btn-primary" id="trayCompareBtn" disabled>Compare</button>
+    </div>
+  </section>
+
+  <p class="compare-toast" id="compareToast" role="status" aria-live="polite"></p>
+
+  <!-- Compare modal -->
+  <div class="compare-modal-overlay" id="compareModalOverlay" hidden>
+    <div class="compare-modal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle" id="compareModal">
+      <div class="compare-modal-header">
+        <h2 id="compareModalTitle">Compare books</h2>
+        <button type="button" class="compare-modal-close" id="compareModalClose" aria-label="Close compare dialog">
+          <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="compare-modal-body" id="compareModalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/books.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
